@@ -13,9 +13,9 @@ function Adminheader({ setOpen }) {
         <Menu />
         <span className="sr-only">Toggle Menu</span>
       </Button>
-
+      
       <div className="flex-1 flex justify-end">
-        <Button className="inline-flex gap-2 items-center rounded-md px-4 text-sm font-medium shadow">
+        <Button className="inline-flex gap-2 items-center rounded-md px-4 text-sm font-medium shadow" >
           <LogOut />
           Logout
         </Button>

@@ -55,7 +55,7 @@ export const loginFormControls = [
       placeholder: "Enter product title",
     },
     {
-      label: "Description",
+      label: "description",
       name: "description",
       componentType: "textarea",
       placeholder: "Enter product description",

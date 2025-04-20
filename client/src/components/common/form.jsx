@@ -9,13 +9,14 @@ import {
   SelectContent,
   SelectItem,
 } from "@radix-ui/react-select";
+import Textarea from "../ui/textarea";
 
 function Form({
   formControls,
   formData,
   setFormData,
   onSubmit,
-  buttonText,
+  ButtonText,
 }) {
   function renderInputsByComponentType(getControlItem) {
     let element = null;
@@ -36,13 +37,14 @@ function Form({
                 [getControlItem.name]: event.target.value,
               })
             }
-            className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black placeholder:text-sm"/>
+            className="px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-black placeholder:text-sm"
+          />
         );
         break;
 
       case "select":
         element = (
-          <div className="w-full">
+          <div className="w-full relative z-10">
             <Select
               onValueChange={(value) =>
                 setFormData({
@@ -53,16 +55,19 @@ function Form({
               value={value}
             >
               <SelectTrigger
-  className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm flex items-center justify-between text-gray-700 focus:outline-none focus:ring-2 focus:ring-black"
->
-  <SelectValue placeholder={getControlItem.label} />
-</SelectTrigger>
-              <SelectContent className="z-50 bg-white border border-gray-300 rounded-md shadow-lg">
+                className="w-full px-3 py-2 border border-gray-300 rounded-md text-sm flex items-center justify-between text-gray-700 focus:outline-none focus:ring-2 focus:ring-black"
+              >
+                <SelectValue placeholder={getControlItem.label} />
+              </SelectTrigger>
+              <SelectContent
+                className="z-50 bg-white border border-gray-300 rounded-md shadow-lg"
+                position="popper"
+              >
                 {getControlItem.options?.map((optionItem) => (
                   <SelectItem
                     key={optionItem.id}
                     value={optionItem.id}
-                    className="px-4 py-2 hover:bg-gray-100 cursor-pointer  text-center"
+                    className="px-4 py-2 hover:bg-gray-100 cursor-pointer text-center"
                   >
                     {optionItem.label}
                   </SelectItem>
@@ -75,7 +80,7 @@ function Form({
 
       case "textarea":
         element = (
-          <textarea
+          <Textarea
             name={getControlItem.name}
             placeholder={getControlItem.placeholder}
             id={getControlItem.id}
@@ -130,7 +135,7 @@ function Form({
         ))}
       </div>
       <Button type="submit" className="mt-4 w-full text-white">
-        {buttonText || "Submit"}
+        {ButtonText || "Submit"}
       </Button>
     </form>
   );

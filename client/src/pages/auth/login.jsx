@@ -27,7 +27,7 @@ function AuthLogin() {
         console.log(data);
     
         if (data?.payload?.success) {
-          toast.success(data?.payload?.message || 'Login successful');
+          toast.success(data?.payload?.message || 'Login successfully');
           const role = data.payload.user?.role;  // assuming your payload contains `user` object
           console.log("User role:", role); // check this
 
